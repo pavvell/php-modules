@@ -6,7 +6,6 @@ class googleSearchApi{
   protected $searchId;
   protected $apiUrl = 'https://www.googleapis.com/customsearch/v1';
   protected $params = array();
-  protected $rawResponse = null;
   protected $response = array(
     'raw' => null,
     'json' => null
@@ -15,10 +14,7 @@ class googleSearchApi{
   protected $settings = array(
     'safeSearch' => 'medium'  // off, medium, high
   );
-  
-  public $lastError = '';
-  public $totalResults = 0;
-  
+    
   function __construct($apiKey, $searchId){
     $this->apiKey = $apiKey;
     $this->searchId = $searchId;
@@ -59,7 +55,9 @@ class googleSearchApi{
   }
   
   public function page($num){
-    $this->params['start'] = ($num - 1) * 10 + 1;
+    $this->rawOptions(
+      ['start' => ($num - 1) * 10 + 1]
+    );
     return $this;    
   }
   
@@ -97,7 +95,9 @@ class googleSearchApi{
   }
   
   public function imagesOnly(){
-    $this->params['searchType'] = 'image';
+    $this->rawOptions(
+      ['searchType' => 'image']
+    );
     return $this;
   }
   
@@ -109,7 +109,9 @@ class googleSearchApi{
     } 
      
     $codeFromatted = mb_strtoupper($code, 'UTF-8');
-    $this->params['cr'] = 'country' . $codeFromatted;
+    $this->rawOptions(
+      ['cr' => 'country' . $codeFromatted]
+    );
     return $this;
   } 
   
@@ -165,8 +167,7 @@ class googleSearchApi{
     $response = curl_exec($curl);
     
     if(!$response){
-      $this->lastError = 'Connection error';
-      return $this;
+      throw new Exception('Connection error');
     }
     
     $this->saveResponse($response);

@@ -70,7 +70,7 @@ echo 'Results: ';
 echo var_dump($results);
 ```
 
-- `safeSearch(mode)`, accepted values for `mode`: `off`, `medium`, `high`
+- `safeSearch(mode)`, accepted values for `mode`: `off`, `medium`, `high`. Default value is `medium`
 - `imagesOnly()`, results will be containing only images
 - `country(code)`, `code` must be 2 letters country code like: 'NL', 'US', 'RU' etc. By specifing country code your're telling google to search among web sites of specified country.
 - `page(num)`, `num` - must be an integer, and specifies a number of search result's page you want to get. The result will be containing 10 items (web sites/images) from this page.
