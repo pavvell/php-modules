@@ -17,7 +17,7 @@ First of all, you need to create an instance, and then, you can send queries:
 $g = new googleSearchApi('API_KEY', 'SEARCH_ID');
 ```
 
-**Simple query**. Here we chain two methods: `query()` and `get()`. The result is gonna be an array with 10 found items or an empty array if nohing is found:
+**Simple query**. Here we chain two methods: `query()` and `get()`. The result is gonna be an array with 10 found items or an empty array if nothing is found:
 ```php
 $items = $g->query('Mediterranean Sea Hotels')->get();
 ```
@@ -35,7 +35,7 @@ $items = $g->searchImages('Mediterranean Sea');
 **Total search results**:
 ```php
 $items = $g->searchImages('Mediterranean Sea');
-echo $g->total(); // this will print number like: 7430000
+echo $g->total(); // this will print a number like: 7430000
 ```
 
 **Another way to get result items**:
@@ -72,6 +72,6 @@ echo var_dump($results);
 
 - `safeSearch(mode)`, accepted values for `mode`: `off`, `medium`, `high`
 - `imagesOnly()`, results will be containing only images
-- `country(code)`, code must be 2 letters country code like: 'NL', 'US', 'RU' etc. By specifing country code your're telling google to search among web sites of specified country.
+- `country(code)`, `code` must be 2 letters country code like: 'NL', 'US', 'RU' etc. By specifing country code your're telling google to search among web sites of specified country.
 - `page(num)`, `num` - must be an integer, and specifies a number of search result's page you want to get. The result will be containing 10 items (web sites/images) from this page.
-- `rawOptions(options)`, options must be an associative array (optionName => Value). All available options for configuring google search queries available [here](https://developers.google.com/custom-search/json-api/v1/reference/cse/list). All methods listed above is just wrappers of `rawOptions()` and are made for readability.
+- `rawOptions(options)`, options must be an associative array (optionName => Value). All available options for configuring google search queries available [here](https://developers.google.com/custom-search/json-api/v1/reference/cse/list). All methods listed above is just wrappers of `rawOptions()` and are made for better readability.
