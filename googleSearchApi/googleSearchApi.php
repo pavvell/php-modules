@@ -116,7 +116,9 @@ class googleSearchApi{
   } 
   
   public function query($query){
-    $this->params['q'] = $query;
+    $this->rawOptions(
+      ['q' => $query]
+    );
     return $this;
   }
   
