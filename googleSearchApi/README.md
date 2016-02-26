@@ -17,35 +17,35 @@ First of all, you need to create an instance, and then, you can send queries:
 $g = new googleSearchApi('API_KEY', 'SEARCH_ID');
 ```
 
-Simple query. Here we chain two methods: `query()` and `get()`. The result is gonna be an array with 10 found items or an empty array if nohing is found:
+**Simple query**. Here we chain two methods: `query()` and `get()`. The result is gonna be an array with 10 found items or an empty array if nohing is found:
 ```php
 $items = $g->query('Mediterranean Sea Hotels')->get();
 ```
 
-Image Search:
+**Image Search**:
 ```php
 $items = $g->query('Mediterranean Sea')->imagesOnly()->get();
 ```
 
-Shorthanded method for image search:
+**Shorthanded method for image search**:
 ```php
 $items = $g->searchImages('Mediterranean Sea');
 ```
 
-Total results:
+**Total search results**:
 ```php
 $items = $g->searchImages('Mediterranean Sea');
 echo $g->total(); // this will print number like: 7430000
 ```
 
-Another way to get result items:
+**Another way to get result items**:
 ```php
 $g->searchImages('Mediterranean Sea');
 $total = $g->total();
 $items = $g->items();
 ```
 
-Getting raw google response:
+**Getting raw google response**:
 ```php
 $g->query('Mediterranean Sea Hotels')->get();
 $rawResponse = $g->raw();
